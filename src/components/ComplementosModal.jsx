@@ -1,7 +1,7 @@
 import React, { useState } from "react"
-import extrasLanche from "../mocks/ExtrasLanche.jsx"
-import extrasXB from "../mocks/LancheXBurguer.jsx"
-import sacheMock from "../mocks/Sache.jsx"
+import extrasLanche from "../mocks/extrasLanche.jsx"
+import extrasXB from "../mocks/lancheXBurguer.jsx"
+import sacheMock from "../mocks/sache.jsx"
 
 // IMPORTAÇÃO DOS MOCKS DE COMBOS
 import comboIndividualMock from "../mocks/comboIndividualMock"
