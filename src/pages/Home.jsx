@@ -9,8 +9,11 @@ import bebidas from "../mocks/bebidas.jsx"
 import combos from "../mocks/combos.jsx"
 import lancheturbo from "../mocks/lancheturbo.jsx"
 import porcoes from "../mocks/porcoes.jsx"
+import promocoes from "../mocks/promocoes.jsx"
+import promocaoTurbo from "../mocks/promocaoTurbo.jsx"
 import ComplementosModal from "../components/ComplementosModal.jsx"
 import fretePorBairro from "../mocks/fretePorBairro.jsx"
+import BotaoCarrinho from "../components/BotaoCarrinho.jsx"
 
 function Home() {
     const [filtro, setFiltro] = useState("lanches")
@@ -21,7 +24,7 @@ function Home() {
     const [pagamento, setPagamento] = useState("")
     const [modalAberto, setModalAberto] = useState(false)
     const [produtoSelecionado, setProdutoSelecionado] = useState(null)
-    const todosProdutos = [...lanches, ...lancheturbo, ...pasteis, ...combos, ...porcoes, ...caldos, ...bebidas, ...doces]
+    const todosProdutos = [...lanches, ...lancheturbo, ...pasteis, ...combos, ...promocoes, ...promocaoTurbo, ...porcoes, ...caldos, ...bebidas, ...doces]
 
     const abrirModal = (produto) => {
         setProdutoSelecionado(produto)
@@ -39,6 +42,11 @@ function Home() {
         novoCarrinho.splice(index, 1)
         setCarrinho(novoCarrinho)
     }
+
+      const abrirCarrinho = () => {
+    // Substituir com navegação ou exibição do carrinho
+    alert("Abrir carrinho");
+  };
 
     const total = carrinho.reduce((acc, item) => acc + item.preco, 0)
 
@@ -73,11 +81,18 @@ function Home() {
             }
 
             if (item.extras?.length > 0) {
-                texto += `  *Extras:* ${item.extras.map((e) => e.nome).join(", ")}\n`
+                // Para cada extra, mostra "Nome" ou "Nome xQuantidade" se quantidade > 1
+                const extrasTexto = item.extras
+                    .map(e => e.quantidade > 1 ? `${e.nome} x${e.quantidade}` : e.nome)
+                    .join(", ")
+                texto += `  *Extras:* ${extrasTexto}\n`
             }
 
             if (item.saches?.length > 0) {
-                texto += `  *Sachês/Molhos:* ${item.saches.map((s) => s.nome).join(", ")}\n`
+                const sachesTexto = item.saches
+                    .map(s => s.quantidade > 1 ? `${s.nome} x${s.quantidade}` : s.nome)
+                    .join(", ")
+                texto += `  *Sachês/Molhos:* ${sachesTexto}\n`
             }
 
             if (!item.tipo && item.observacao?.trim()) {
@@ -107,6 +122,8 @@ function Home() {
         if (filtro === "lanches Turbo") return lancheturbo
         if (filtro === "pastel") return pasteis
         if (filtro === "combos") return combos
+        if (filtro === "Lanche 3X") return promocoes
+        if (filtro === "Turbo 3X") return promocaoTurbo
         if (filtro === "porção") return porcoes
         if (filtro === "caldos") return caldos
         if (filtro === "bebidas") return bebidas
@@ -123,7 +140,7 @@ function Home() {
             <div className="p-4 mt-6 md:mx-20 space-y-8 min-h-screen">
                 {/* Filtros */}
                 <div className="flex gap-2 flex-wrap">
-                    {["lanches", "lanches Turbo", "pastel", "combos", "porção", "caldos", "bebidas", "doces"].map((cat) => (
+                    {["lanches", "lanches Turbo", "pastel", "combos", "Lanche 3X", "Turbo 3X", "porção", "caldos", "bebidas", "doces"].map((cat) => (
                         <button
                             key={cat}
                             onClick={() => setFiltro(cat)}
@@ -171,7 +188,7 @@ function Home() {
                 ))}
 
                 {/* Carrinho */}
-                <div>
+                <div id="carrinho" >
                     <h2 className="text-xl font-semibold mb-2">🛒 Carrinho</h2>
                     <ul className="mb-4">
 
@@ -209,8 +226,30 @@ function Home() {
                                             </div>
                                         )}
 
-                                        {item.extras?.length > 0 && <div>Extras: {item.extras.map(e => e.nome).join(", ")}</div>}
-                                        {item.saches?.length > 0 && <div>Sachês/Molhos: {item.saches.map(s => s.nome).join(", ")}</div>}
+                                        {item.extras?.length > 0 && (
+                                            <div>
+                                                Extras:{" "}
+                                                {item.extras.map((extra, idx) => (
+                                                    <span key={idx}>
+                                                        {extra.nome} {extra.quantidade > 1 ? `x${extra.quantidade}` : ""}
+                                                        {idx < item.extras.length - 1 && ", "}
+                                                    </span>
+                                                ))}
+                                            </div>
+                                        )}
+
+                                        {item.saches?.length > 0 && (
+                                            <div>
+                                                Sachês/Molhos:{" "}
+                                                {item.saches.map((sache, idx) => (
+                                                    <span key={idx}>
+                                                        {sache.nome} {sache.quantidade > 1 ? `x${sache.quantidade}` : ""}
+                                                        {idx < item.saches.length - 1 && ", "}
+                                                    </span>
+                                                ))}
+                                            </div>
+                                        )}
+
                                         {item.observacao && <div>Observação: {item.observacao}</div>}
 
                                     </div>
@@ -229,7 +268,7 @@ function Home() {
                     </ul>
                     {total < 20 && (
                         <p className="text-sm text-red-600 mb-2">
-                            Taxa de Entrega Grátis para compras acima de <strong>R$20,00</strong>
+                            Taxa de entrega grátis para compras acima de <strong>R$20,00</strong>
                         </p>
                     )}
 
@@ -326,6 +365,7 @@ function Home() {
                     onConfirm={adicionarComComplementos}
                 />
             )}
+            <BotaoCarrinho onClick={abrirCarrinho} quantidade={carrinho.length} />
             <Footer />
         </>
     )

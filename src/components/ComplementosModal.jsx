@@ -8,6 +8,7 @@ import comboIndividualMock from "../mocks/comboIndividualMock"
 import combo2Mock from "../mocks/combo2Mock"
 import combo4Mock from "../mocks/combo4Mock"
 import combo6Mock from "../mocks/combo6Mock"
+import extraLanchesTurbo from './../mocks/extrasLancheTurbo';
 
 export default function ComplementoModal({ produto, onClose, onConfirm }) {
   const [saches, setSaches] = useState([])
@@ -42,9 +43,16 @@ export default function ComplementoModal({ produto, onClose, onConfirm }) {
   const showExtras = !isPastel && isLanche && !isCombo
   const showObservacao = (isLanche || isPastel) && !isCombo
 
-  // MOCK DE EXTRAS
-  const isXB = produto.nome.toLowerCase() === "x-burguer"
-  const extrasMock = isXB ? extrasXB : extrasLanche
+  const nomeLower = produto.nome.toLowerCase()
+  const isXB = nomeLower.includes("x-burguer")
+  const isLancheTurbo = nomeLower.includes("turbo")
+
+  const extrasMock = isXB
+    ? extrasXB
+    : isLancheTurbo
+      ? extraLanchesTurbo
+      : extrasLanche
+
 
   // ALTERAR QUANTIDADE DE ITENS
   const alterarQuantidade = (lista, setLista, item, operacao) => {
@@ -354,7 +362,7 @@ export default function ComplementoModal({ produto, onClose, onConfirm }) {
                 <textarea
                   className="w-full border rounded p-2"
                   rows="3"
-                  placeholder="Ex: Sem cebola, pouco molho…"
+                  placeholder="Digite sua observação..."
                   value={observacao}
                   onChange={(e) => setObservacao(e.target.value)}
                 />

@@ -80,7 +80,7 @@ const lancheturbo = [
   },
   {
     id: 8,
-    nome: "X-Tudo",
+    nome: "X-Tudo Turbo",
     descricao:
       "Hambúrguer, bacon, ovo, calabresa, cheddar derretido, alface e tomate, tudo isso em um pão selado. Um verdadeiro monstro dos lanches, feito pra quem quer tudo de uma vez!",
     preco: 25.99,
