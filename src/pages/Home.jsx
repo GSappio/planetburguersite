@@ -122,7 +122,7 @@ function Home() {
         if (filtro === "lanches Turbo") return lancheturbo
         if (filtro === "pastel") return pasteis
         if (filtro === "combos") return combos
-        if (filtro === "Lanche 3X") return promocoes
+        if (filtro === "promoção") return promocoes
         if (filtro === "Turbo 3X") return promocaoTurbo
         if (filtro === "porção") return porcoes
         if (filtro === "caldos") return caldos
@@ -140,7 +140,7 @@ function Home() {
             <div className="p-4 mt-6 md:mx-20 space-y-8 min-h-screen">
                 {/* Filtros */}
                 <div className="flex gap-2 flex-wrap">
-                    {["lanches", "lanches Turbo", "pastel", "combos", "Lanche 3X", "Turbo 3X", "porção", "caldos", "bebidas", "doces"].map((cat) => (
+                    {["lanches", "lanches Turbo", "pastel", "combos", "promoção", "Turbo 3X", "porção", "caldos", "bebidas", "doces"].map((cat) => (
                         <button
                             key={cat}
                             onClick={() => setFiltro(cat)}
