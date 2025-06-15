@@ -111,7 +111,7 @@ function Home() {
         )
 
 
-        const numero = "5511967759989"
+        const numero = "5513981618608"
         window.open(`https://wa.me/${numero}?text=${mensagem}`, "_blank")
     }
 
