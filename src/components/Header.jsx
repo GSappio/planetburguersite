@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 export function Header() {
   const [menuAberto, setMenuAberto] = useState(false)
@@ -11,9 +12,9 @@ export function Header() {
   return (
      <header className="bg-red-700 text-white py-4 shadow-md relative z-50 a">
       <div className="w-full px-8 md:px-24 flex items-center justify-between">
-        <h1 className="text-2xl sm:text-3xl font-bold tracking-wide">
-          Planet Burguer
-        </h1>
+          <Link to="/" className="text-2xl sm:text-3xl font-bold tracking-wide">
+            Planet Burguer
+          </Link>
 
         {/* Menu desktop */}
         <nav className="hidden sm:flex gap-6 items-center text-sm sm:text-base font-medium">

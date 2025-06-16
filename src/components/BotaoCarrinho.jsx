@@ -18,7 +18,7 @@ export default function BotaoCarrinho({ onClick, quantidade }) {
           className="w-6 h-6"
           fill="none"
           viewBox="0 0 24 24"
-          stroke="currentColor"ßß
+          stroke="currentColor"
           strokeWidth={2} 
         >
           <path
