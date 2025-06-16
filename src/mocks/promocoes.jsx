@@ -13,7 +13,7 @@ const promocoes = [
     nome: "X-Burguer - 6 UNIDADES",
     descricao:
       "6 unidades: Hambúrguer suculento com queijo cheddar derretido, alface crocante e tomate fresco, servido no pão selado na chapa. Um clássico cheio de sabor e equilíbrio!",
-    preco: 45.99,
+    preco: 40,
     imagem: xburguer,
     categoria: "lanche",
     ativo: true
@@ -23,7 +23,7 @@ const promocoes = [
     nome: "X-Salada - 3 UNIDADES",
     descricao:
       "3 unidades: Hambúrguer suculento com queijo cheddar derretido, alface crocante e tomate fresco, servido no pão selado na chapa. Um clássico cheio de sabor e equilíbrio!",
-    preco: 35.99,
+    preco: 35,
     imagem: saladaTurbo,
     categoria: "lanche",
     ativo: true
@@ -33,7 +33,7 @@ const promocoes = [
     nome: "X-Calabresa - 3 UNIDADES",
     descricao:
       "3 unidades: Hambúrguer com calabresa grelhada, cheddar cremoso, alface e tomate, tudo isso no pão selado. Uma explosão de sabor defumado e intensidade!",
-    preco: 40.99,
+    preco: 40,
     imagem: calabresaturbo,
     categoria: "lanche",
     ativo: true
@@ -43,7 +43,7 @@ const promocoes = [
     nome: "X-Frango - 3 UNIDADES",
     descricao:
       "3 unidades: Hambúrguer com filé de frango grelhado no ponto certo, queijo cheddar, alface e tomate fresco em um pão selado e macio. Leve, saboroso e marcante!",
-    preco: 40.99,
+    preco: 40,
     imagem: frangoTurbo,
     categoria: "lanche",
     ativo: true
@@ -53,7 +53,7 @@ const promocoes = [
     nome: "X-Bacon - 3 UNIDADES",
     descricao:
       "3 unidades: Hambúrguer suculento com cheddar derretido, tiras generosas de bacon crocante, alface e tomate, servido em pão selado. Um lanche que une potência e sabor!",
-    preco: 40.99,
+    preco: 40,
     imagem: baconTurbo,
     categoria: "lanche",
     ativo: true
@@ -63,7 +63,7 @@ const promocoes = [
     nome: "X-Frango Bacon - 3 UNIDADES",
     descricao:
       "3 unidades: Hambúrguer com filé de frango grelhado com bacon crocante, cheddar cremoso, alface e tomate no pão selado. Uma combinação ousada para quem ama sabor de verdade!",
-    preco: 45.99,
+    preco: 45,
     imagem: frangoBaconTurbo,
     categoria: "lanche",
     ativo: true
@@ -73,7 +73,7 @@ const promocoes = [
     nome: "X-Egg Bacon - 3 UNIDADES",
     descricao:
       "3 unidades: Hambúrguer suculento com bacon crocante, ovo frito, cheddar derretido, alface e tomate. Um lanche robusto para quem não abre mão de tudo junto!",
-    preco: 45.99,
+    preco: 45,
     imagem: eggBaconTurbo,
     categoria: "lanche",
     ativo: true
@@ -83,7 +83,7 @@ const promocoes = [
     nome: "X-Egg - 3 UNIDADES",
     descricao:
       "3 unidades: Hambúrguer com ovo frito, cheddar derretido, alface e tomate fresco, no pão selado. Simples, completo e delicioso!",
-    preco: 40.99,
+    preco: 40,
     imagem: eggTurbo,
     categoria: "lanche",
     ativo: true

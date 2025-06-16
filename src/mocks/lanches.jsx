@@ -13,7 +13,7 @@ const lanches = [
     nome: "X-Burguer",
     descricao:
       "Hambúrguer suculento com queijo cheddar derretido, alface crocante e tomate fresco, servido no pão selado na chapa. Um clássico cheio de sabor e equilíbrio!",
-    preco: 9.99,
+    preco: 8,
     imagem: xburguer,
     categoria: "lanche",
     ativo: true
@@ -23,7 +23,7 @@ const lanches = [
     nome: "X-Salada",
     descricao:
       "Hambúrguer suculento com queijo cheddar derretido, alface crocante e tomate fresco, servido no pão selado na chapa. Um clássico cheio de sabor e equilíbrio!",
-    preco: 13.99,
+    preco: 13, 
     imagem: saladaTurbo,
     categoria: "lanche",
     ativo: true
@@ -33,7 +33,7 @@ const lanches = [
     nome: "X-Calabresa",
     descricao:
       "Calabresa grelhada com hambúrguer, cheddar cremoso, alface e tomate, tudo isso no pão selado. Uma explosão de sabor defumado e intensidade!",
-    preco: 15.99,
+    preco: 15,
     imagem: calabresaturbo,
     categoria: "lanche",
     ativo: true
@@ -43,7 +43,7 @@ const lanches = [
     nome: "X-Frango",
     descricao:
       "Filé de frango grelhado no ponto certo, queijo cheddar, alface e tomate fresco em um pão selado e macio. Leve, saboroso e marcante!",
-    preco: 15.99,
+    preco: 15,
     imagem: frangoTurbo,
     categoria: "lanche",
     ativo: true
@@ -53,7 +53,7 @@ const lanches = [
     nome: "X-Bacon",
     descricao:
       "Hambúrguer suculento com cheddar derretido, tiras generosas de bacon crocante, alface e tomate, servido em pão selado. Um lanche que une potência e sabor!",
-    preco: 15.99,
+    preco: 15,
     imagem: baconTurbo,
     categoria: "lanche",
     ativo: true
@@ -63,7 +63,7 @@ const lanches = [
     nome: "X-Frango Bacon",
     descricao:
       "Filé de frango grelhado com bacon crocante, cheddar cremoso, alface e tomate no pão selado. Uma combinação ousada para quem ama sabor de verdade!",
-    preco: 17.99,
+    preco: 17,
     imagem: frangoBaconTurbo,
     categoria: "lanche",
     ativo: true
@@ -73,7 +73,7 @@ const lanches = [
     nome: "X-Egg Bacon",
     descricao:
       "Hambúrguer suculento com bacon crocante, ovo frito, cheddar derretido, alface e tomate. Um lanche robusto para quem não abre mão de tudo junto!",
-    preco: 17.99,
+    preco: 17,
     imagem: eggBaconTurbo,
     categoria: "lanche",
     ativo: true
@@ -83,7 +83,7 @@ const lanches = [
     nome: "X-Egg",
     descricao:
       "Hambúrguer com ovo frito, cheddar derretido, alface e tomate fresco, no pão selado. Simples, completo e delicioso!",
-    preco: 15.99,
+    preco: 15,
     imagem: eggTurbo,
     categoria: "lanche",
     ativo: true

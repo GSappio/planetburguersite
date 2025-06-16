@@ -1,35 +1,38 @@
-import React, { useState } from "react"
-import extrasLanche from "../mocks/extrasLanche.jsx"
-import extrasXB from "../mocks/lancheXBurguer.jsx"
-import sacheMock from "../mocks/sache.jsx"
+import React, { useState } from 'react'
+import extrasLanche from '../mocks/extrasLanche.jsx'
+import extrasXB from '../mocks/lancheXBurguer.jsx'
+import sacheMock from '../mocks/sache.jsx'
+import extrasXBTurbo from './../mocks/extrasXBTurbo'
 
 // IMPORTAÇÃO DOS MOCKS DE COMBOS
-import comboIndividualMock from "../mocks/comboIndividualMock"
-import combo2Mock from "../mocks/combo2Mock"
-import combo4Mock from "../mocks/combo4Mock"
-import combo6Mock from "../mocks/combo6Mock"
-import extraLanchesTurbo from './../mocks/extrasLancheTurbo';
+import comboIndividualMock from '../mocks/comboIndividualMock'
+import combo2Mock from '../mocks/combo2Mock'
+import combo4Mock from '../mocks/combo4Mock'
+import combo6Mock from '../mocks/combo6Mock'
+import extraLanchesTurbo from './../mocks/extrasLancheTurbo'
 
 export default function ComplementoModal({ produto, onClose, onConfirm }) {
   const [saches, setSaches] = useState([])
   const [extras, setExtras] = useState([])
-  const [observacao, setObservacao] = useState("")
+  const [observacao, setObservacao] = useState('')
   const [comboExtras, setComboExtras] = useState({})
   const [lanchesSelecionados, setLanchesSelecionados] = useState([])
 
   // CATEGORIA E REGRAS
-  const categoria = produto.categoria?.toLowerCase() || ""
-  const isLanche = categoria === "lanche"
-  const isPastel = categoria === "pastel"
+  const categoria = produto.categoria?.toLowerCase() || ''
+  const isLanche = categoria === 'lanche'
+  const isPastel = categoria === 'pastel'
 
-  const isSimples = ["porcoes", "caldo", "bebida", "doces", "doce"].includes(categoria)
+  const isSimples = ['porcoes', 'caldo', 'bebida', 'doces', 'doce'].includes(
+    categoria
+  )
 
   // VERIFICAÇÃO DE COMBOS POR NOME
   const comboMap = {
-    "combo individual": comboIndividualMock,
-    "combo casal": combo2Mock,
-    "combo familia 4": combo4Mock,
-    "combo familia 6": combo6Mock,
+    'combo individual': comboIndividualMock,
+    'combo casal': combo2Mock,
+    'combo familia 4': combo4Mock,
+    'combo familia 6': combo6Mock,
   }
 
   const comboKey = Object.keys(comboMap).find((key) =>
@@ -44,33 +47,35 @@ export default function ComplementoModal({ produto, onClose, onConfirm }) {
   const showObservacao = (isLanche || isPastel) && !isCombo
 
   const nomeLower = produto.nome.toLowerCase()
-  const isXB = nomeLower.includes("x-burguer")
-  const isLancheTurbo = nomeLower.includes("turbo")
+  const isXB = nomeLower.includes('x-burguer')
+  const isLancheTurbo = nomeLower.includes('turbo')
+  const isXBTurbo = isXB && isLancheTurbo
 
-  const extrasMock = isXB
+  const extrasMock = isXBTurbo
+    ? extrasXBTurbo
+    : isXB
     ? extrasXB
     : isLancheTurbo
-      ? extraLanchesTurbo
-      : extrasLanche
-
+    ? extraLanchesTurbo
+    : extrasLanche
 
   // ALTERAR QUANTIDADE DE ITENS
   const alterarQuantidade = (lista, setLista, item, operacao) => {
     setLista((prev) => {
       const existente = prev.find((e) => e.id === item.id)
-      if (!existente && operacao === "add") {
+      if (!existente && operacao === 'add') {
         return [...prev, { ...item, quantidade: 1 }]
       } else if (existente) {
         return prev
           .map((e) =>
             e.id === item.id
               ? {
-                ...e,
-                quantidade:
-                  operacao === "add"
-                    ? e.quantidade + 1
-                    : Math.max(e.quantidade - 1, 0),
-              }
+                  ...e,
+                  quantidade:
+                    operacao === 'add'
+                      ? e.quantidade + 1
+                      : Math.max(e.quantidade - 1, 0),
+                }
               : e
           )
           .filter((e) => e.quantidade > 0)
@@ -85,21 +90,31 @@ export default function ComplementoModal({ produto, onClose, onConfirm }) {
       ...prev,
       [grupoId]: {
         ...item,
-        __titulo: comboMock.find(g => g.id === grupoId)?.tituloSimples || grupoId,
+        __titulo:
+          comboMock.find((g) => g.id === grupoId)?.tituloSimples || grupoId,
       },
     }))
   }
 
   // CALCULAR VALORES
-  const totalSaches = saches.reduce((soma, s) => soma + s.preco * s.quantidade, 0)
-  const totalExtras = extras.reduce((soma, e) => soma + e.preco * e.quantidade, 0)
+  const totalSaches = saches.reduce(
+    (soma, s) => soma + s.preco * s.quantidade,
+    0
+  )
+  const totalExtras = extras.reduce(
+    (soma, e) => soma + e.preco * e.quantidade,
+    0
+  )
 
-  const totalCombo = Object.entries(comboExtras).reduce((soma, [grupoId, item]) => {
-    if (Array.isArray(item)) {
-      return soma + item.reduce((sub, op) => sub + (op?.preco || 0), 0)
-    }
-    return soma + (item?.preco || 0)
-  }, 0)
+  const totalCombo = Object.entries(comboExtras).reduce(
+    (soma, [grupoId, item]) => {
+      if (Array.isArray(item)) {
+        return soma + item.reduce((sub, op) => sub + (op?.preco || 0), 0)
+      }
+      return soma + (item?.preco || 0)
+    },
+    0
+  )
 
   const precoFinal = produto.preco + totalSaches + totalExtras + totalCombo
 
@@ -110,45 +125,49 @@ export default function ComplementoModal({ produto, onClose, onConfirm }) {
       saches: showSaches ? saches : [],
       extras: showExtras ? extras : [],
       observacao: isCombo
-        ? comboExtras["5"]?.texto || ""
+        ? comboExtras['5']?.texto || ''
         : showObservacao
-          ? observacao
-          : "",
-      tipo: isCombo ? "combo" : undefined,
+        ? observacao
+        : '',
+      tipo: isCombo ? 'combo' : undefined,
       comboExtras: isCombo ? comboExtras : undefined,
       preco: precoFinal,
     })
     onClose()
   }
 
-
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
       <div
         className={`bg-white rounded-xl p-6 w-full max-w-xl shadow-lg overflow-hidden
-    ${isSimples ? "h-auto max-h-[40vh]" : "h-full max-h-[60vh]"}`}
+    ${isSimples ? 'h-auto max-h-[40vh]' : 'h-full max-h-[60vh]'}`}
       >
-
         <div className="flex flex-col h-full">
-          <h2 className="text-xl font-bold mb-4 text-red-700">{produto.nome}</h2>
+          <h2 className="text-xl font-bold mb-4 text-red-700">
+            {produto.nome}
+          </h2>
           <div className="flex-1 overflow-y-auto pr-2 space-y-4">
-
             {isCombo && comboMock && (
               <div>
                 {comboMock.map((grupo) => {
-                  if (grupo.tipo === "observacao") {
+                  if (grupo.tipo === 'observacao') {
                     return (
                       <div key={grupo.id}>
-                        <label className="block font-semibold mb-2">{grupo.titulo}</label>
+                        <label className="block font-semibold mb-2">
+                          {grupo.titulo}
+                        </label>
                         <textarea
                           className="w-full border rounded p-2"
                           rows={3}
                           placeholder="Digite sua observação..."
-                          value={comboExtras[grupo.id]?.texto || ""}
+                          value={comboExtras[grupo.id]?.texto || ''}
                           onChange={(e) =>
                             setComboExtras((prev) => ({
                               ...prev,
-                              [grupo.id]: { ...prev[grupo.id], texto: e.target.value },
+                              [grupo.id]: {
+                                ...prev[grupo.id],
+                                texto: e.target.value,
+                              },
                             }))
                           }
                         />
@@ -156,8 +175,7 @@ export default function ComplementoModal({ produto, onClose, onConfirm }) {
                     )
                   }
 
-                  if (grupo.tipo === "escolha") {
-
+                  if (grupo.tipo === 'escolha') {
                     // // Código para múltiplas escolhas (botões + e -)
                     // const selecionados = comboExtras[grupo.id] || []
 
@@ -177,23 +195,44 @@ export default function ComplementoModal({ produto, onClose, onConfirm }) {
                         <p className="font-semibold mb-2">{grupo.titulo}</p>
                         {grupo.opcoes.map((opcao) => {
                           const selecionados = comboExtras[grupo.id] || []
-                          const quantidade = selecionados.filter((o) => o.id === opcao.id).length
+                          const quantidade = selecionados.filter(
+                            (o) => o.id === opcao.id
+                          ).length
 
                           return (
-                            <div key={opcao.id} className="flex items-center gap-2 mb-2">
+                            <div
+                              key={opcao.id}
+                              className="flex items-center gap-2 mb-2"
+                            >
                               {opcao.imagem && (
-                                <img src={opcao.imagem} alt={opcao.nome} className="w-6 h-6" />
+                                <img
+                                  src={opcao.imagem}
+                                  alt={opcao.nome}
+                                  className="w-6 h-6"
+                                />
                               )}
-                              <span>{opcao.nome} {opcao.preco ? `(+ R$${opcao.preco.toFixed(2)})` : ""}</span>
+                              <span>
+                                {opcao.nome}{' '}
+                                {opcao.preco
+                                  ? `(+ R$${opcao.preco.toFixed(2)})`
+                                  : ''}
+                              </span>
                               <div className="flex items-center gap-1 ml-auto">
                                 <button
                                   onClick={() => {
                                     if (quantidade > 0) {
-                                      const novosSelecionados = [...selecionados]
-                                      const index = novosSelecionados.findIndex((o) => o.id === opcao.id)
+                                      const novosSelecionados = [
+                                        ...selecionados,
+                                      ]
+                                      const index = novosSelecionados.findIndex(
+                                        (o) => o.id === opcao.id
+                                      )
                                       if (index !== -1) {
                                         novosSelecionados.splice(index, 1)
-                                        setComboExtras((prev) => ({ ...prev, [grupo.id]: novosSelecionados }))
+                                        setComboExtras((prev) => ({
+                                          ...prev,
+                                          [grupo.id]: novosSelecionados,
+                                        }))
                                       }
                                     }
                                   }}
@@ -204,12 +243,25 @@ export default function ComplementoModal({ produto, onClose, onConfirm }) {
                                 <span>{quantidade}</span>
                                 <button
                                   onClick={() => {
-                                    if (selecionados.length < grupo.quantidadeMaxima) {
-                                      const grupoDados = Array.isArray(comboMock)
-                                        ? comboMock.find((g) => g.id === grupo.id)
+                                    if (
+                                      selecionados.length <
+                                      grupo.quantidadeMaxima
+                                    ) {
+                                      const grupoDados = Array.isArray(
+                                        comboMock
+                                      )
+                                        ? comboMock.find(
+                                            (g) => g.id === grupo.id
+                                          )
                                         : null
 
-                                      const novoItem = { ...opcao, __titulo: grupoDados?.tituloSimples || grupoDados?.titulo || grupo.id }
+                                      const novoItem = {
+                                        ...opcao,
+                                        __titulo:
+                                          grupoDados?.tituloSimples ||
+                                          grupoDados?.titulo ||
+                                          grupo.id,
+                                      }
 
                                       setComboExtras((prev) => ({
                                         ...prev,
@@ -234,32 +286,44 @@ export default function ComplementoModal({ produto, onClose, onConfirm }) {
                   return (
                     <div key={grupo.id}>
                       <p className="font-semibold">{grupo.titulo}</p>
-                      <p className="font-extralight mb-2 text-sm text-gray-500">{grupo.descricao}</p>
+                      <p className="font-extralight mb-2 text-sm text-gray-500">
+                        {grupo.descricao}
+                      </p>
                       {grupo.opcoes.map((opcao) => (
                         <label
                           key={opcao.id}
-                          className={`flex items-center gap-2 mb-1 cursor-pointer ${selecionado?.id === opcao.id ? "font-bold" : ""
-                            }`}
+                          className={`flex items-center gap-2 mb-1 cursor-pointer ${
+                            selecionado?.id === opcao.id ? 'font-bold' : ''
+                          }`}
                         >
                           <input
                             type="radio"
                             name={`grupo-${grupo.id}`}
                             checked={selecionado?.id === opcao.id}
-                            onChange={() => handleComboChange(grupo.id, opcao, grupo.titulo)}
+                            onChange={() =>
+                              handleComboChange(grupo.id, opcao, grupo.titulo)
+                            }
                           />
                           {opcao.imagem && (
-                            <img src={opcao.imagem} alt={opcao.nome} className="w-6 h-6" />
+                            <img
+                              src={opcao.imagem}
+                              alt={opcao.nome}
+                              className="w-6 h-6"
+                            />
                           )}
-                          <span>{opcao.nome} {opcao.preco ? `(+ R$${opcao.preco.toFixed(2)})` : ""}</span>
+                          <span>
+                            {opcao.nome}{' '}
+                            {opcao.preco
+                              ? `(+ R$${opcao.preco.toFixed(2)})`
+                              : ''}
+                          </span>
                         </label>
                       ))}
                     </div>
                   )
                 })}
               </div>
-
             )}
-
 
             {/* EXTRAS E SACHÊS NORMAIS */}
             {!isCombo && showSaches && (
@@ -287,7 +351,7 @@ export default function ComplementoModal({ produto, onClose, onConfirm }) {
                       <div className="flex items-center gap-2">
                         <button
                           onClick={() =>
-                            alterarQuantidade(saches, setSaches, sache, "sub")
+                            alterarQuantidade(saches, setSaches, sache, 'sub')
                           }
                           className="px-2 py-1 bg-gray-200 rounded"
                         >
@@ -296,7 +360,7 @@ export default function ComplementoModal({ produto, onClose, onConfirm }) {
                         <span>{qtd}</span>
                         <button
                           onClick={() =>
-                            alterarQuantidade(saches, setSaches, sache, "add")
+                            alterarQuantidade(saches, setSaches, sache, 'add')
                           }
                           className="px-2 py-1 bg-gray-200 rounded"
                         >
@@ -334,7 +398,7 @@ export default function ComplementoModal({ produto, onClose, onConfirm }) {
                       <div className="flex items-center gap-2">
                         <button
                           onClick={() =>
-                            alterarQuantidade(extras, setExtras, extra, "sub")
+                            alterarQuantidade(extras, setExtras, extra, 'sub')
                           }
                           className="px-2 py-1 bg-gray-200 rounded"
                         >
@@ -343,7 +407,7 @@ export default function ComplementoModal({ produto, onClose, onConfirm }) {
                         <span>{qtd}</span>
                         <button
                           onClick={() =>
-                            alterarQuantidade(extras, setExtras, extra, "add")
+                            alterarQuantidade(extras, setExtras, extra, 'add')
                           }
                           className="px-2 py-1 bg-gray-200 rounded"
                         >

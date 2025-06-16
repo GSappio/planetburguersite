@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 export function Header() {
   const [menuAberto, setMenuAberto] = useState(false)
 
-  const numeroWhatsApp = '5511967759989'
+  const numeroWhatsApp = '5513981618608'
   const mensagem = 'Olá! Preciso de ajuda com o meu pedido.'
   const linkWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`
   const linkInstagram = 'https://www.instagram.com/planetburguerpg' // Substitua pelo real

@@ -3,6 +3,7 @@ import extracheddar from "../img/extracheddar.avif"
 import extramussarela from "../img/extramussarela.avif"
 import extraqueijoprato from "../img/extraqueijoprato.avif"
 import extramolhocheddar from "../img/extramolhocheddar.avif"
+import extracatupiry from "../img/extracatupiry.avif"
 
 const extraXBurguer = [
   {
@@ -34,6 +35,12 @@ const extraXBurguer = [
     nome: "+ Cheddar Cremoso",
     preco: 3,
     imagem: extramolhocheddar
+  },
+  {
+    id: 6,
+    nome: "+ Catupiry",
+    preco: 3,
+    imagem: extracatupiry
   },
 ]
 
