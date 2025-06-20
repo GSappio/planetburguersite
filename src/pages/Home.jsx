@@ -389,7 +389,7 @@ function Home() {
             <option value="Real">Real</option>
             <option value="Ribeirópolis">Ribeirópolis</option>
             <option value="Samambaia">Samambaia</option>
-            <option value="Somelar">Somelar</option>
+            <option value="Solemar">Solemar</option>
             <option value="Vela Stella">Vela Stella</option>
             <option value="Vila Atlântica">Vila Atlântica</option>
             <option value="Vila Dianópolis">Vila Dianópolis</option>
