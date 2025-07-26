@@ -2,7 +2,7 @@ import mousseMaracuja from "../img/moussemaracuja.jpeg"
 import mousseMorango from "../img/moussemorango.avif"
 import prestigioCamadas from "../img/prestigiocamadas.avif"
 import vulcaocenoura from "../img/vulcaocenoura.jpeg"
-
+import vulcaodocecoco from "../img/vulcaobrancococo.png"
 const doces = [
   {
     id: 1,
@@ -37,6 +37,15 @@ const doces = [
     descricao: "Uma sobremesa gelada com textura cremosa e consistente, combinando coco e chocolate em um sabor marcante. Perfeita para os apaixonados pelo clássico Prestígio — agora em uma versão irresistível no potinho!",
     preco: 17.99,
     imagem: vulcaocenoura,
+    categoria: "doces", 
+    ativo: true
+  },
+  {
+    id: 5,
+    nome: "Mini Bolo Vulcão doce de leite coco",
+    descricao: "Uma sobremesa gelada com textura cremosa e consistente, combinando coco e chocolate em um sabor marcante. Perfeita para os apaixonados pelo clássico Prestígio — agora em uma versão irresistível no potinho!",
+    preco: 17.99,
+    imagem: vulcaodocecoco,
     categoria: "doces", 
     ativo: true
   },
