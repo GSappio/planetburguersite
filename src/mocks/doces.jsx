@@ -3,6 +3,7 @@ import mousseMorango from "../img/moussemorango.avif"
 import prestigioCamadas from "../img/prestigiocamadas.avif"
 import vulcaocenoura from "../img/vulcaocenoura.jpeg"
 import vulcaodocecoco from "../img/vulcaobrancococo.png"
+
 const doces = [
   {
     id: 1,
@@ -33,18 +34,18 @@ const doces = [
   },
     {
     id: 4,
-    nome: "Mini Bolo Vulcão Cenoura",
-    descricao: "Uma sobremesa gelada com textura cremosa e consistente, combinando coco e chocolate em um sabor marcante. Perfeita para os apaixonados pelo clássico Prestígio — agora em uma versão irresistível no potinho!",
-    preco: 17.99,
+    nome: "Mini Bolo Vulcão de Cenoura com Chocolate",
+    descricao: "Mini Bolo Vulcão Cenoura com Chocolate, massa de chocolate fofinha com cobertura cremosa de chocolate. Uma combinação clássica e irresistível!",
+    preco: 18,
     imagem: vulcaocenoura,
     categoria: "doces", 
     ativo: true
   },
   {
     id: 5,
-    nome: "Mini Bolo Vulcão doce de leite coco",
-    descricao: "Uma sobremesa gelada com textura cremosa e consistente, combinando coco e chocolate em um sabor marcante. Perfeita para os apaixonados pelo clássico Prestígio — agora em uma versão irresistível no potinho!",
-    preco: 17.99,
+    nome: "Mini Bolo Vulcão Doce de Leite e Coco",
+    descricao: "Mini Bolo Vulcão Doce de Leite com Coco, massa branca fofinha com cobertura cremosa de doce de leite e coco ralado por cima. Uma combinação suave e deliciosa!",
+    preco: 18,
     imagem: vulcaodocecoco,
     categoria: "doces", 
     ativo: true
