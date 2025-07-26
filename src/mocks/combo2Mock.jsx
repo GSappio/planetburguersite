@@ -26,7 +26,7 @@ const combo2Mock = [
       { id: "t1", nome: "Sim", preco: 10 },
       { id: "t2", nome: "Não", preco: 0 },
     ],
-  },
+  }, 
   {
     id: 2,
     titulo: "Escolha seu lanche",
