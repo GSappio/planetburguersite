@@ -23,7 +23,7 @@ export default function ComplementoModal({ produto, onClose, onConfirm }) {
   const isLanche = categoria === 'lanche'
   const isPastel = categoria === 'pastel'
 
-  const isSimples = ['porcoes', 'caldo', 'bebida', 'doces', 'doce'].includes(
+  const isSimples = ['porcoes', 'bebida', 'doces', 'doce'].includes(
     categoria
   )
 

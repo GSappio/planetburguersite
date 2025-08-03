@@ -3,7 +3,7 @@ import { Header } from '../components/Header'
 import { Footer } from '../components/Footer'
 import lanches from '../mocks/lanches.jsx'
 import pasteis from '../mocks/pasteis.jsx'
-import caldos from '../mocks/caldos.jsx'
+// import caldos from '../mocks/caldos.jsx'
 import doces from '../mocks/doces.jsx'
 import bebidas from '../mocks/bebidas.jsx'
 import combos from '../mocks/combos.jsx'
@@ -28,11 +28,11 @@ function Home() {
     ...lanches,
     ...lancheturbo,
     ...pasteis,
-    ...combos,
+    // ...combos,
     ...promocoes,
     ...promocaoTurbo,
     ...porcoes,
-    ...caldos,
+    // ...caldos,
     ...bebidas,
     ...doces,
   ]
@@ -137,7 +137,7 @@ function Home() {
     if (filtro === 'promoção') return promocoes
     if (filtro === 'Turbo 3X') return promocaoTurbo
     if (filtro === 'porção') return porcoes
-    if (filtro === 'caldos') return caldos
+    // if (filtro === 'caldos') return caldos
     if (filtro === 'bebidas') return bebidas
     if (filtro === 'doces') return doces
     return []
@@ -164,7 +164,7 @@ function Home() {
             'promoção',
             'Turbo 3X',
             'porção',
-            'caldos',
+            // 'caldos',
             'bebidas',
             'doces',
           ].map((cat) => (
