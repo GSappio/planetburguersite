@@ -6,7 +6,7 @@ import frangoBaconTurbo from "../img/frangobaconturbo.avif"
 import eggBaconTurbo from "../img/eggbaconturbo.avif"
 import lancheXTudo from "../img/lanchextudo.avif"
 
-import extracheddar from "../img/extracheddar.avif"
+import extramolhocheddar from "../img/extramolhocheddar.avif"
 import extracatupiry from "../img/extracatupiry.avif"
 import extrabacon from "../img/extrabacon.avif"
 
@@ -52,9 +52,9 @@ const combo6Mock = [
     tipo: "escolha",
     quantidadeMaxima: 5,
     opcoes: [
-      { id: "b1", nome: "Catupiry", preco: 2.5, imagem: extracatupiry },
-      { id: "b2", nome: "Bacon", preco: 2.5, imagem: extrabacon },
-      { id: "b3", nome: "Cheddar", preco: 2.5, imagem: extracheddar },
+      { id: "b1", nome: "Catupiry", preco: 5, imagem: extracatupiry },
+      { id: "b2", nome: "Bacon", preco: 5, imagem: extrabacon },
+      { id: "b3", nome: "Cheddar", preco: 5, imagem: extramolhocheddar },
     ],
   },
   {
